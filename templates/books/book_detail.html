@@ -11,6 +11,18 @@
             <p class="lead">Written by {{ book.author }}</p>
             <p class="fw-bold">R{{ book.price }}</p>
         </div>
+        <div>
+            <div>
+                <h3>Reviews</h3>
+            </div>
+            <div>
+                <ul>
+                    {% for review in book.reviews.all %}
+                        <li>{{ review.review }} ({{ review.author }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
