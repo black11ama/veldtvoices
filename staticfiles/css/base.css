@@ -1,5 +1,19 @@
-h1 {
-    color: red;
+:root {
+    --primary-color: #15616D;
+    --secondary-color: #FFFBFC;
+    --tertiary-color: #F5F749;
+}
+
+/*
+--bs-primary: var(--primary);
+--bs-secondary: var(secondary);
+--bs-success: var(tertiary)
+*/
+
+* {
+    background-color: var(primary);
+    color: Blue;
+    font-family: 'Poppins', serif;
 }
 
 .bookcover {

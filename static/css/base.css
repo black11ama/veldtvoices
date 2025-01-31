@@ -1,8 +1,26 @@
-h1 {
-    color: red;
+:root {
+    --primary-color: #15616D; /* caribbean current */
+    --secondary-color: #FFFBFC; /* snow */
+    --tertiary-color: #F5F749; /* icterine */
+}
+
+/*
+--bs-primary: var(--primary);
+--bs-secondary: var(secondary);
+--bs-success: var(tertiary)
+*/
+
+* {
+    background-color: var(primary);
+    font-family: 'Poppins', serif;
 }
 
 .bookcover {
     height: 300px;
     width: auto;
+}
+
+.btn {
+    background-color: var(tertiary);
+    color: var(primary);
 }

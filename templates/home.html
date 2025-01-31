@@ -1,22 +1,87 @@
 {% extends '_base.html' %}
 
-{% block title %} Home {% endblock %}
-{%  load static %}
+{% block title %} Veldt Voices – Your Gateway to a World of Stories {% endblock %}
+<!--{%  load static %}-->
 
 {% block content %}
-    <div class="row justify-content-center">
-        <div class="col-lg-7">
-            <div class="text-center my-3">
-                <h1>
-                    Hello user
-                </h1>
+    <!-- HERO SECTION -->
+    <div class="shadow-sm p-5 mb-5 rounded">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="text-center my-3">
+                    <div class="hero-section">
+                        <div class="headline">
+                            <h1>Discover the rich voices of <br />South Africa</h1>
+                        </div>
+                        <div class="subtext">
+                            <h4>A curated collection of books by South African authors, spanning generations.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARCH BAR -->
+        <div class="row justify-content-center my-4">
+            <div class="col-lg-4">
                 {% if user.is_authenticated %}
-                    <h3>Welcome to Veldt Voices</h3>
+                    <div class="search-bar">
+                        <form class="d-flex" role="search" action="{% url 'search_results' %}" method="get">
+                            <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-dark btn-lg" type="submit">Search</button>
+                        </form>
+                    </div>
                 {% else %}
-                    <p>You are not logged in. <a href="{% url 'account_login' %}">Login here</a>.</p>
+                    <div class="text-center">
+                        <p><strong>New here?</strong> Create an account to save your favorite books and reviews!</p>
+                        <p>
+                            <a href="{% url 'account_signup' %}" class="text-decoration-none"><i class="bi bi-pencil-square"></i> Sign Up</a> | <a href="{% url 'account_login' %}" class="text-decoration-none"><i class="bi bi-person-fill"></i> Log In</a>
+                        </p>
+                    </div>
                 {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURED BOOKS -->
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="featured-books">
+                <div class="section-title">
+                    <h2>Explore Our Top Picks</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center my-4">
+        <div class="col-12 col-lg-9">
+            <div class="row bg-dark shadow-sm p-5 mb-5 rounded border border-bottom">
+                {% for book in book_list %}
+                    <div class="col-12 col-lg-4">
+                        <div class="books">
+                            <div class="card mb-3">
+                                {% if book.cover %}
+                                    <img src="{{ book.cover.url }}" class="card-img-top" alt="{{ book.title }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ book.title }}</h5>
+                                    <p class="card-text">{{ book.author }}</p>
+                                    <a href="{{ book.get_absolute_url }}" class="btn btn-dark">Read More <i class="bi bi-arrow-up-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
                 <div>
-                    <img src="{% static 'images/book_cover.jpg' %}" alt="Django For Professionals bookcover" class="bookcover">
+                    <p class="lead">
+                        No books available.
+                    </p>
+                </div>
+                {% endfor %}
+                <div class="text-center">
+                    <div class="my-5">
+                        <a href="{% url 'book_list' %}">See all <i class="bi bi-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

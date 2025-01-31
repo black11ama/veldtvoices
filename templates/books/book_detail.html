@@ -3,27 +3,71 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-lg-6">
-        <div>
-            {% if book.cover %}
-                <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="bookcover">
-            {% endif %}
-            <h2>
-                <a href="">{{ book.title }}</a>
-            </h2>
-            <p class="lead">Written by {{ book.author }}</p>
-            <p class="fw-bold">R{{ book.price }}</p>
-        </div>
-        <div>
-            <div>
-                <h3>Reviews</h3>
+    <div class="col-lg-10">
+        <div class="row">
+            <div class="col-lg-3">
+                {% if book.cover %}
+                    <img src="{{ book.cover.url }}" alt="{{ book.title}}" class="bookcover">
+                {% endif %}
             </div>
-            <div>
-                <ul>
-                    {% for review in book.reviews.all %}
-                        <li>{{ review.review }} ({{ review.author }})</li>
-                    {% endfor %}
-                </ul>
+            <div class="col-lg-9">
+                <div>
+                    <h1>{{ book.title }}</h1>
+                </div>
+                <div>
+                    <p class="small"><strong>{{ book.author }}</strong></p>
+                </div>
+                <div>
+                    <p>
+                        {{ book.description }}
+                    </p>
+                </div>
+                <div>
+                    <hr>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col-6"><strong>Language</strong></div>
+                        <div class="col-6">{{ book.language }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><strong>Release Date</strong></div>
+                        <div class="col-6">{{ book.published_date }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><strong>Number of Pages</strong></div>
+                        <div class="col-6">{{ book.number_of_pages }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><strong>ISBN</strong></div>
+                        <div class="col-6">{{ book.isbn }}</div>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div>
+                        <div>
+                            <h3>Reviews</h3>
+                        </div>
+                        <div class="p-3 mb-5 rounded">
+                            {% for review in book.reviews.all %}
+                            <div class="mb-2 card">
+                              <div class="card-body border-start border-dark">
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">Reviewed by <br />{{ review.author }}</h6>
+                                  <p class="card-text">
+                                      "{{ review.review }}"
+                                  </p>
+                              </div>
+                            </div>
+                            {% empty %}
+                            <div>
+                                <p class="lead">
+                                    There are no reviews for this book.
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

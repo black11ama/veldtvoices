@@ -1,24 +1,26 @@
 {% extends '_base.html' %}
 
-{% block title %} Log In {% endblock %}
+{% block title %} Welcome Back to Veldt Voices {% endblock %}
 
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="row justify-content-center">
-        <div class="col-lg-4">
+        <div class="col col-lg-5">
             <div class="text-center">
-                <h2>Login</h2>
-                <p>Enter your information below or <a href="{% url 'account_signup' %}" class="text-decoration-none fw-bold">signup here</a></p>
+                <h2>Veldt Voices: Stories Waiting for You</h2>
+                <p class="lead">
+                    Log in to uncover books that inspire or <a href="{% url 'account_signup' %}" class="text-decoration-none">sign up here</a> to start your reading odyssey.
+                </p>
             </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-3">
-            <form action="" method="post" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+            <form action="" method="post" class="shadow-sm p-3 mb-5 border border-dark rounded">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div>
-                    <button type="submit" class="btn btn-dark w-100 btn-lg">Login</button>
+                    <button type="submit" class="btn btn-outline-dark w-100 btn-lg">Log In</button>
                 </div>
             </form>
         </div>

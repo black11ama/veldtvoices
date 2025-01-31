@@ -1,23 +1,23 @@
 {% extends '_base.html' %}
 
-{% block title %} Signup {% endblock %}
+{% block title %} Become Part of Veldt Voices – Explore Endless Narratives {% endblock %}
 
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="row justify-content-center">
-        <div class="col-lg-4">
+        <div class="col col-lg-4">
             <div class="text-center">
-                <h2>Sign Up</h2>
-                <p>Enter your information below</p>
+                <h2>Discover Stories That Inspire</h2>
+                <p class="lead">Join Veldt Voices and discover stories that inspire, entertain, and transform.</p>
             </div>
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-lg-3">
-            <form action="" method="post" class="shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+            <form action="" method="post" class="shadow-sm p-3 mb-5 bg-body-tertiary border border-dark rounded">
                 {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-dark btn-lg w-100">Signup</button>
+                    {{ form|crispy }}
+                <button type="submit" class="btn btn-outline-dark btn-lg w-100">Sign Up</button>
             </form>
         </div>
     </div>
